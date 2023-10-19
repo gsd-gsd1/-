@@ -103,6 +103,33 @@
 
 
 ## 硬件连接与接线
+在设计之初，为了尽可能减少接线，使用了串联分压电路的方式进行数据的采集，这就导致了一个问题，即微动开关的个数并不能无限堆叠，在3.3V电压输入的情况下，建议微动开关个数不超过10个，以下是电路图，以三个为例：
+
+![image](https://github.com/gsd-gsd1/Peripheral-Analog-Mouse-and-Keyboard/assets/140622400/6e2f8df9-2e44-4b83-821d-a430dc0266b3)
+
+仿真结果如下所示：分别闭合开关时的电压电流情况（推荐 http://scratch.trtos.com/circuitjs.html 这个在线电路绘制网页）
+
+![image](https://github.com/gsd-gsd1/Peripheral-Analog-Mouse-and-Keyboard/assets/140622400/bd7cc106-1ab8-450e-9cf7-045c9a08dc1f)
+
+单个微动开关的连接示意图（需要电焊），其他的进行串联即可
+
+![image](https://github.com/gsd-gsd1/Peripheral-Analog-Mouse-and-Keyboard/assets/140622400/f217f983-47b2-4c4b-b69c-709f289735e3)
+
+分压电阻的焊接示意图：
+
+![image](https://github.com/gsd-gsd1/Peripheral-Analog-Mouse-and-Keyboard/assets/140622400/c8a93903-e871-4fb6-b238-77ef7998f8f0)
+
+## 存在的缺陷与不足
+在电路和软件的设计上，已经可以进行检测，但现在有个比较大的问题，就是微动开关好像不是很好固定，使用过皮筋进行固定，但会歪，效果不是很好，希望有大佬可以提供一个较好的解决方案，使得通用性尽可能高，即
+可以很方便的进行组装和拆卸，并且还可以进行调整。
+
+现在设想的方案是通过皮筋进行固定，如下图所示：
+![image](https://github.com/gsd-gsd1/Peripheral-Analog-Mouse-and-Keyboard/assets/140622400/853a33eb-008e-4dbd-8269-3e9faa797e99)
+
+在软件方面，肯定存在各种各样的BUG（毕竟我只用了不到一个星期写出来的代码，个人水平有限，让大家见笑了），还望大家多多见谅，硬件方面的程序用的是Arduino编写的，
+这个对新手比较友好，STM32的话，说实话不是初学者一下就能看懂的，并且ESP32比较便宜，主频240MHz，还自带蓝牙和WIFI，仅需20多块钱，个人感觉性价比很高，而且体积还不大，兼容Arduino，python和C（我可不是打广告的，只是这个板子确实不错）。
+
+
 ## 未来的更新计划
 找到了一种更好的传感器材料，可以把拉伸转换为电阻变化并且该材料本身具有弹性，非常适合用来该项目，但相关代码还未编写，相关材料还未进行具体的测试实验，但未来的方向就是那样，用一块可粘贴的切具有弹性的柔性传感器薄膜进行检测，可以说是相当方便
 #
